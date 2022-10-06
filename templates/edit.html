@@ -1,0 +1,13 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Search Page{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {{ wtf.quick_form(form) }}
+
+    {% with messages = get_flashed_messages() %}
+        <p>{{messages}}</p>
+    {% endwith %}
+</div>
+{% endblock content%}
