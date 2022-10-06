@@ -79,6 +79,9 @@ def search():
     form = SearchForm(request.form)
 
     if request.method == 'POST':
+        if form.edit.data:
+
+            return redirect(url_for('editbook'))
 
         if form.book_name.data:
             book_info = BookModel.query.filter_by(book_name=form.book_name.data).all()
@@ -89,8 +92,7 @@ def search():
             book_info = author.book
             return render_template('search.html', form=form, info=book_info)
 
-        if form.edit.data:
-            return redirect(url_for('editbook'))
+
     
 
     return render_template('search.html', form=form, info=[])
